@@ -15,6 +15,7 @@ typedef struct {
 get_scale(s21_decimal num);  // определение плавающей точки
 get_part(int bit_index);  // определение части числа (1, 2, 3) по индексу
 get_bit(s21_decimal num, int bit_index);  // бит по индексу
+int get_sign(s21_decimal value);
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
             s21_decimal *result);  // вычитание
