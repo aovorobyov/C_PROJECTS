@@ -16,6 +16,9 @@ get_scale(s21_decimal num);  // определение плавающей точ
 get_part(int bit_index);  // определение части числа (1, 2, 3) по индексу
 get_bit(s21_decimal num, int bit_index);  // бит по индексу
 int get_sign(s21_decimal value);
+void set_bit(s21_decimal *num, int bit_index, unsigned int value);
+int set_scale(s21_decimal *num, unsigned int scale);
+void set_sign(s21_decimal *num, unsigned int sign);
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
             s21_decimal *result);  // вычитание
