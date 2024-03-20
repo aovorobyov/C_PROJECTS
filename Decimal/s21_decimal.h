@@ -22,6 +22,7 @@ int s21_negate(s21_decimal value, s21_decimal *result);
 int is_zero(s21_decimal num);
 int s21_is_less(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
+int s21_is_less_or_equal(s21_decimal value_1, s21_decimal value_2);
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
             s21_decimal *result);  // вычитание
