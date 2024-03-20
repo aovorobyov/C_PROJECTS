@@ -18,7 +18,9 @@ get_bit(s21_decimal num, int bit_index);  // бит по индексу
 int get_sign(s21_decimal value);
 void set_bit(s21_decimal *num, int bit_index, unsigned int value);
 int set_scale(s21_decimal *num, unsigned int scale);
-void set_sign(s21_decimal *num, unsigned int sign);
+int s21_negate(s21_decimal value, s21_decimal *result);
+int is_zero(s21_decimal num);
+int s21_is_less(s21_decimal value_1, s21_decimal value_2);
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
             s21_decimal *result);  // вычитание
