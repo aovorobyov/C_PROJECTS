@@ -12,12 +12,14 @@ typedef struct {
 #include <stdio.h>
 #include <stdlib.h>
 
-get_scale(s21_decimal num);  // определение плавающей точки
-get_part(int bit_index);  // определение части числа (1, 2, 3) по индексу
-get_bit(s21_decimal num, int bit_index);  // бит по индексу
-int get_sign(s21_decimal value);
-
-int s21_sub(s21_decimal value_1, s21_decimal value_2,
-            s21_decimal *result);  // вычитание
+s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result);
+int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal* result);
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result);
+int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal* result);
+int AddSubNeg(s21_decimal negative, s21_decimal positive, s21_decimal* result,
+              int is_sub);
+int AddOrSub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result,
+             int is_sub);
+int CorrectOverflow(s21_big_decimal* result_big, int scale, int sign);
 
 #endif  // S21_DECIMAL
