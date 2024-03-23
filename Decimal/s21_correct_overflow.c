@@ -1,6 +1,6 @@
 #include "s21_decimal.h"
 
-int CorrectOverflow(s21_big_decimal* result_big, int scale, int sign) {
+int s21_correct_overflow(s21_big_decimal* result_big, int scale, int sign) {
   s21_big_decimal temp = {{0}};  // хранение промежут рез
   int sum = 0, err = 0;  // суммирование сброшенных цифр при уменьшении масштаба
   while (scale > 28) {

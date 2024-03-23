@@ -1,8 +1,9 @@
 #include "s21_decimal.h"
 
-int AddOrSub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result,
-             int is_sub) {  // сложение или вычитание (в зависимости от флага
-                            // 0-сложение, 1-вычитание)
+int s21_add_or_sub(s21_decimal value_1, s21_decimal value_2,
+                   s21_decimal* result,
+                   int is_sub) {  // сложение или вычитание (в зависимости от
+                                  // флага 0-сложение, 1-вычитание)
   s21_big_decimal value_1_big, value_2_big, result_big = {{0}};
   int negate = 0, scale = 0, err = 0,
       sign = GetSign(
@@ -27,7 +28,8 @@ int AddOrSub(s21_decimal value_1, s21_decimal value_2, s21_decimal* result,
   sign = GetSign(value_1);
   // проверка не превышает ли масштаб максимум и не является ли рез 0
   if (!(BigIsZero(result_big)) || scale > 28) {
-    err = CorrectOverflow(&result_big, scale, sign);  // коррекция переполнения
+    err = s21_correct_overflow(&result_big, scale,
+                               sign);  // коррекция переполнения
   } else
     BigSetScale(&result_big, scale);
   BigSetSign(&result_big, sign);

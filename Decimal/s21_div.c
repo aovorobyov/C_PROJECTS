@@ -28,7 +28,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal* result) {
     scale += BigGetScale(result_big);
 
     if (!(BigIsZero(result_big)) || scale > 28) {
-      err = CorrectOverflow(&result_big, scale, sign);
+      err = s21_correct_overflow(&result_big, scale, sign);
     } else
       BigSetScale(&result_big, scale);
     BigSetSign(&result_big, sign);
