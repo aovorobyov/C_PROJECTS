@@ -12,9 +12,9 @@ typedef struct {
 #include <stdio.h>
 #include <stdlib.h>
 
-get_scale(s21_decimal num);  // определение плавающей точки
-get_part(int bit_index);  // определение части числа (1, 2, 3) по индексу
-get_bit(s21_decimal num, int bit_index);  // бит по индексу
+int get_scale(s21_decimal num);  // определение плавающей точки
+int get_part(int bit_index);  // определение части числа (1, 2, 3) по индексу
+int get_bit(s21_decimal num, int bit_index);  // бит по индексу
 int get_sign(s21_decimal value);
 void set_bit(s21_decimal *num, int bit_index, unsigned int value);
 int set_scale(s21_decimal *num, unsigned int scale);

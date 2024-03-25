@@ -1,6 +1,6 @@
 #include "s21_decimal.h"
 
-get_part(int bit_index) {
+int get_part(int bit_index) {
   int part;
 
   if (bit_index < 32) part = 0;
@@ -10,7 +10,7 @@ get_part(int bit_index) {
   return part;
 }
 
-get_bit(s21_decimal num, int bit_index) {
+int get_bit(s21_decimal num, int bit_index) {
   int part = get_part(bit_index);
   bit_index %= 32;
 
