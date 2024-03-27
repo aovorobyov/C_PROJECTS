@@ -1,12 +1,17 @@
 #include "s21_decimal.h"
 
-int s21_is_equal(s21_decimal value_1, s21_decimal value_2) {
-    int res = 1;
-    for (int i = 3; i >= 0; i--) {
-        if (value_1.bits[i] != value_2.bits[i]) {
-            res = 0;
-            break;
-        }
-    }
-    return res;
+int s21_is_equal(s21_decimal a, s21_decimal b) {
+  int res;
+  s21_big_decimal big_a = {{0}};
+  s21_big_decimal big_b = {{0}};
+
+  DecimalToBigDecimal(a, &big_a);
+  DecimalToBigDecimal(b, &big_b);
+  res = compare(big_a, big_b);
+
+  if (res < 0) {
+    return 1;
+  } else if (res > 0) {
+    return 0;
+  }
 }
