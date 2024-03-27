@@ -14,7 +14,7 @@ s21_decimal.a:
 	ar rsc ./s21_decimal.a *.o
 
 test: s21_decimal.a
-	$(CC) s21_*.c ./s21_decimal.a $(TEST) $(LFLAGS) -o test
+	$(CC) s21_*.c $(TEST) $(LFLAGS) -o test
 	./test
 
 gcov_report: s21_decimal.a
