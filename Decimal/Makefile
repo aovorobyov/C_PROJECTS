@@ -1,4 +1,4 @@
-CC= gcc -Werror -Wall -Wextra -std=c11 -gcc
+CC= gcc -Werror -Wall -Wextra -std=c11 -g
 TEST= ./unit_tests/test_*.c
 
 ifeq (shell name, Linux)
