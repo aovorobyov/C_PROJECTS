@@ -1,28 +1,17 @@
 #include "s21_decimal.h"
 
-int s21_is_less(s21_decimal value_1, s21_decimal value_2) {
-    int res = 0;
-    if (get_sign(value_1) && !get_sign(value_2)) res = 1;
-    else if (get_sign(value_1) && get_sign(value_2)) {
-        if (get_scale(value_1) < get_scale(value_2)) res = 1;
-        else if (get_scale(value_1) == get_scale(value_2)) {
-            for (int i = 0; i < 3; i++) {
-                if (value_1.bits[i] > value_2.bits[i]) {
-                    res = 1;
-                    break;
-                }
-            }
-        }
-    } else if (!get_sign(value_1) && !get_sign(value_2)) {
-        if (get_scale(value_1) > get_scale(value_2)) res = 1;
-        else if (get_scale(value_1) == get_scale(value_2)) {
-            for (int i = 0; i < 3; i++) {
-                if (value_1.bits[i] < value_2.bits[i]) {
-                    res = 1;
-                    break;
-                }
-            }
-        }
-    }
-    return res;
+int s21_is_less(s21_decimal a, s21_decimal b) {
+  int res;
+  s21_big_decimal big_a = {{0}};
+  s21_big_decimal big_b = {{0}};
+
+  DecimalToBigDecimal(a, &big_a);
+  DecimalToBigDecimal(b, &big_b);
+  res = compare(big_a, big_b);
+
+  if (res < 0) {
+    return 1;
+  } else if (res > 0) {
+    return 0;
+  }
 }
