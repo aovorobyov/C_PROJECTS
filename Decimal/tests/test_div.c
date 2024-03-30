@@ -8,6 +8,7 @@ START_TEST(s21_div_1) {
 
   ck_assert_int_eq(result_value, 1);
 }
+END_TEST
 
 START_TEST(s21_div_2) {
   // степень 29 (допустимое значение от 0 до 28)

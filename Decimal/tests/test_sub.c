@@ -85,6 +85,7 @@ START_TEST(s21_sub_6) {
 
   ck_assert_int_eq(result_value, 1);
 }
+END_TEST
 
 START_TEST(s21_sub_7) {
   // степень 56 (допустимое значение от 0 до 28)
