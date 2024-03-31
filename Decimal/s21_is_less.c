@@ -5,9 +5,9 @@ int s21_is_less(s21_decimal a, s21_decimal b) {
   s21_big_decimal big_a = {{0}};
   s21_big_decimal big_b = {{0}};
 
-  DecimalToBigDecimal(a, &big_a);
-  DecimalToBigDecimal(b, &big_b);
-  res = compare(big_a, big_b);
+  s21_decimalToBigDecimal(a, &big_a);
+  s21_decimalToBigDecimal(b, &big_b);
+  res = s21_compare(big_a, big_b);
 
   if (res < 0) {
     return 1;

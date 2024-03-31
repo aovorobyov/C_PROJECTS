@@ -1,6 +1,6 @@
 #include "s21_decimal.h"
 
-void transform(s21_big_decimal *whole, DecimalString decStr, s21_decimal *dst) {
+void s21_transform(s21_big_decimal *whole, DecimalString decStr, s21_decimal *dst) {
   s21_big_decimal temp1 = {{0}};
   s21_big_decimal temp2 = {{0}};
   s21_big_decimal fract = {{0}};
@@ -16,24 +16,24 @@ void transform(s21_big_decimal *whole, DecimalString decStr, s21_decimal *dst) {
   }};
   s21_big_decimal ten = {{10, 0, 0, 0, 0, 0, 0, 0}};
 
-  fract = Divide(*whole, mil, whole);
+  fract = s21_divide(*whole, mil, whole);
 
-  for (; decStr.length && BigIsZero(temp1);) {
-    temp1 = Divide(fract, ten, &temp2);
-    if (BigIsZero(temp1)) {
-      temp1 = Divide(fract, ten, &fract);
+  for (; decStr.length && s21_bigIsZero(temp1);) {
+    temp1 = s21_divide(fract, ten, &temp2);
+    if (s21_bigIsZero(temp1)) {
+      temp1 = s21_divide(fract, ten, &fract);
       decStr.length--;
     }
   }
   int temp = decStr.length;
   while (temp--) {
-    Mul10(whole);
+    s21_mul10(whole);
   }
-  BitwiseAddition(*whole, fract, whole);
+  s21_bitwiseAddition(*whole, fract, whole);
 
   if (decStr.expSign) {
     while (decStr.scale > decStr.length) {
-      Mul10(whole);
+      s21_mul10(whole);
       decStr.scale--;
     }
     while (decStr.scale < decStr.length && decStr.scale > 0) {
@@ -44,6 +44,6 @@ void transform(s21_big_decimal *whole, DecimalString decStr, s21_decimal *dst) {
   }
   decStr.scale += decStr.length;
 
-  BigDecimalToDecimal(*whole, dst);
-  SetScale(dst, decStr.scale);
+  s21_bigDecimalToDecimal(*whole, dst);
+  s21_setScale(dst, decStr.scale);
 }

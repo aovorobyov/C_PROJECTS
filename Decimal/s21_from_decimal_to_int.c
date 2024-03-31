@@ -1,4 +1,3 @@
-#include "math.h"
 #include "s21_decimal.h"
 
 int s21_from_decimal_to_int(s21_decimal src, int *dst) {
@@ -9,7 +8,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
       s21_is_greater_or_equal(src, max_int2)) {
     s21_truncate(src, &src);
     *dst = src.bits[0];
-    if (get_sign(src)) {
+    if (s21_getSign(src)) {
       *dst *= -1;
     }
   } else {

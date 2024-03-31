@@ -7,18 +7,18 @@ int s21_floor(s21_decimal value, s21_decimal *result) {
   if (result != NULL) {
     *result = value;
     s21_big_decimal value_big;
-    DecimalToBigDecimal(value, &value_big);
-    int scale = GetScale(value);
+    s21_decimalToBigDecimal(value, &value_big);
+    int scale = s21_getScale(value);
     while (scale) {
-      temp = BigDiv10(&value_big);
+      temp = s21_bigDiv10(&value_big);
       scale--;
     }
-    if (GetSign(value) && !BigIsZero(temp)) {
-      BitwiseAddition(value_big, one, &value_big);
+    if (s21_getSign(value) && !s21_bigIsZero(temp)) {
+      s21_bitwiseAddition(value_big, one, &value_big);
     }
-    BigDecimalToDecimal(value_big, result);
-    SetSign(result, GetSign(value));
-    SetScale(result, 0);
+    s21_bigDecimalToDecimal(value_big, result);
+    s21_setSign(result, s21_getSign(value));
+    s21_setScale(result, 0);
   } else {
     error = 1;
   }

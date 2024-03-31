@@ -1,11 +1,10 @@
-#include "math.h"
 #include "s21_decimal.h"
 
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
   int error = 0;
   int power = 0;
-  int scale = get_scale(src);
-  int sign = get_sign(src);
+  int scale = s21_getScale(src);
+  int sign = s21_getSign(src);
 
   if (dst != NULL) {
     double temp1 = 0.;
@@ -13,8 +12,8 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
     double ten = 10;
     s21_decimal rem = {{0}};
 
-    while (!is_zero(src)) {
-      rem = Div10(&src);
+    while (!s21_isZero(src)) {
+      rem = s21_div10(&src);
       temp1 = rem.bits[0];
       temp2 *= pow(10, power);
       temp2 += temp1;
