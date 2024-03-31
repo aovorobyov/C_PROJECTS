@@ -32,7 +32,13 @@ reduild:
 	make all
 
 clang_n:
+	cd unit_tests
+	clang-format -style=Google -n *.[ch]
+	cd ../
 	clang-format -style=Google -n *.[ch]
 
 clang_i:
+	cd unit_tests
+	clang-format -style=Google -i *.[ch]
+	cd ../
 	clang-format -style=Google -i *.[ch]
