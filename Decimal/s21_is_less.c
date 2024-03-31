@@ -9,9 +9,5 @@ int s21_is_less(s21_decimal a, s21_decimal b) {
   s21_decimalToBigDecimal(b, &big_b);
   res = s21_compare(big_a, big_b);
 
-  if (res < 0) {
-    return 1;
-  } else if (res > 0) {
-    return 0;
-  }
+  return res < 0 ? 1 : 0;
 }

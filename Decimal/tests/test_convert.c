@@ -370,7 +370,7 @@ START_TEST(s21_dec_to_float_9) {
   number.bits[0] = 0b00000000000000000000000000000001;
   number.bits[1] = 0b00000000000000000000000000000000;
   number.bits[2] = 0b00000000000000000000000000000000;
-  SetScale(&number, 6);
+  s21_setScale(&number, 6);
   float result_float = 1e-6;
   int result_error = 0;
   float my_float;
@@ -388,7 +388,7 @@ START_TEST(s21_dec_to_float_10) {
   number.bits[0] = 0b00000000000000000000000000000001;
   number.bits[1] = 0b00000000000000000000000000000000;
   number.bits[2] = 0b00000000000000000000000000000000;
-  SetScale(&number, 5);
+  s21_setScale(&number, 5);
   float result_float = 1e-5;
   int result_error = 0;
   float my_float;
@@ -554,7 +554,7 @@ Suite *test_convert(void) {
   tcase_add_test(tc, s21_dec_to_int_5);
   tcase_add_test(tc, s21_dec_to_int_6);
   tcase_add_test(tc, s21_dec_to_int_7);
-  tcase_add_test(tc, s21_dec_to_int_8)  
+  tcase_add_test(tc, s21_dec_to_int_8);
   tcase_add_test(tc, s21_dec_to_float_1);
   tcase_add_test(tc, s21_dec_to_float_2);
   tcase_add_test(tc, s21_dec_to_float_3);

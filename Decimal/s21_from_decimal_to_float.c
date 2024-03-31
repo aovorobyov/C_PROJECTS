@@ -9,7 +9,6 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
   if (dst != NULL) {
     double temp1 = 0.;
     double temp2 = 0.;
-    double ten = 10;
     s21_decimal rem = {{0}};
 
     while (!s21_isZero(src)) {

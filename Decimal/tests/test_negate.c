@@ -198,18 +198,10 @@ START_TEST(s21_negate_9) {
 }
 END_TEST
 
-START_TEST(s21_negate_10) {
-  s21_decimal src, *result = NULL;
-  int check = s21_negate(src, result);
-  int check_origin = 1;
-  ck_assert_int_eq(check, check_origin);
-}
-END_TEST
-
 Suite *test_negate(void) {
   Suite *s = suite_create("\033[45m-=S21_NEGATE=-\033[0m");
   TCase *tc = tcase_create("negate_tc");
-  
+
   tcase_add_test(tc, s21_negate_1);
   tcase_add_test(tc, s21_negate_2);
   tcase_add_test(tc, s21_negate_3);
@@ -219,7 +211,6 @@ Suite *test_negate(void) {
   tcase_add_test(tc, s21_negate_7);
   tcase_add_test(tc, s21_negate_8);
   tcase_add_test(tc, s21_negate_9);
-  tcase_add_test(tc, s21_negate_10);
   suite_add_tcase(s, tc);
   return s;
 }

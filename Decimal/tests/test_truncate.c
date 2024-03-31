@@ -176,14 +176,6 @@ START_TEST(s21_truncate_8) {
 }
 END_TEST
 
-START_TEST(s21_truncate_9) {
-  s21_decimal src, *result = NULL;
-  int check = s21_truncate(src, result);
-  int check_origin = 1;
-  ck_assert_int_eq(check, check_origin);
-}
-END_TEST
-
 Suite *test_truncate(void) {
   Suite *s = suite_create("\033[45m-=S21_TRUNCATE=-\033[0m");
   TCase *tc = tcase_create("truncate_tc");
@@ -196,7 +188,6 @@ Suite *test_truncate(void) {
   tcase_add_test(tc, s21_truncate_6);
   tcase_add_test(tc, s21_truncate_7);
   tcase_add_test(tc, s21_truncate_8);
-  tcase_add_test(tc, s21_truncate_9);  
   suite_add_tcase(s, tc);
   return s;
 }

@@ -20,8 +20,8 @@ typedef struct {
   int expSign;
 } DecimalString;
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 int s21_sub(s21_decimal value_1, s21_decimal value_2,
             s21_decimal* result);  // corriele
@@ -45,7 +45,7 @@ int s21_getBit(s21_decimal num, int bit_index);
 void s21_setBit(s21_decimal* num, int bit_index, unsigned value);
 int s21_getPart(int num);
 void s21_setScale(s21_decimal* num, int scale_value);
-int s21_negate(s21_decimal value, s21_decimal *result);
+int s21_negate(s21_decimal value, s21_decimal* result);
 int s21_isZero(s21_decimal num);
 int s21_is_less(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
@@ -57,19 +57,20 @@ void s21_toZero(s21_decimal* num);
 int is_dec_valid(s21_decimal decimal);
 
 int s21_stringParser(char* str, s21_decimal* dst);
-void s21_bankRounding(s21_big_decimal *decimal, s21_big_decimal rem);
-void s21_mathRounding(s21_big_decimal *decimal, s21_big_decimal rem);
-int s21_round(s21_decimal value, s21_decimal *result);
+void s21_bankRounding(s21_big_decimal* decimal, s21_big_decimal rem);
+void s21_mathRounding(s21_big_decimal* decimal, s21_big_decimal rem);
+int s21_round(s21_decimal value, s21_decimal* result);
 int s21_compare(s21_big_decimal a, s21_big_decimal b);
 int s21_getScale(s21_decimal num);
-s21_decimal s21_div10(s21_decimal *decimal);
-int s21_floor(s21_decimal value, s21_decimal *result);
-void s21_transform(s21_big_decimal *whole, DecimalString decStr, s21_decimal *dst);
-int s21_from_decimal_to_float(s21_decimal src, float *dst);
-int s21_from_decimal_to_int(s21_decimal src, int *dst);
-int s21_from_float_to_decimal(float src, s21_decimal *dst);
-int s21_from_int_to_decimal(int src, s21_decimal *dst);
-int s21_truncate(s21_decimal value, s21_decimal *result);
+s21_decimal s21_div10(s21_decimal* decimal);
+int s21_floor(s21_decimal value, s21_decimal* result);
+void s21_transform(s21_big_decimal* whole, DecimalString decStr,
+                   s21_decimal* dst);
+int s21_from_decimal_to_float(s21_decimal src, float* dst);
+int s21_from_decimal_to_int(s21_decimal src, int* dst);
+int s21_from_float_to_decimal(float src, s21_decimal* dst);
+int s21_from_int_to_decimal(int src, s21_decimal* dst);
+int s21_truncate(s21_decimal value, s21_decimal* result);
 
 void s21_normalise(s21_big_decimal* a, s21_big_decimal* b);
 int s21_bigGetScale(s21_big_decimal num);
