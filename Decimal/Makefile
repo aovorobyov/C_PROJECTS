@@ -1,5 +1,5 @@
 CC= gcc -Werror -Wall -Wextra -std=c11 -g
-TEST= ./unit_tests/test_*.c
+TEST= ./tests/test_*.c
 
 ifeq (shell name, Linux)
 	LFLAGS= -lcheck -lsubunit -pthread -lrt -lm
