@@ -1,40 +1,44 @@
-FLAGS = -Wall -Wextra -Werror -std=c11
-EXECUTABLES := lcov
-UNAME_S := $(shell uname -s)
+CC= gcc -Werror -Wall -Wextra -std=c11 -g
+TEST= ./tests/test_*.c
 
-ifeq ($(UNAME_S),Linux)
-	CFLAGS := -lcheck -lsubunit -lm
-	COMMAND := xdg-open
-	EXECUTABLES += xdg-open
-endif
-ifeq ($(UNAME_S),Darwin)
-	CFLAGS := -lcheck
-	COMMAND := open
+ifeq (shell name, Linux)
+	LFLAGS= -lcheck -lsubunit -pthread -lrt -lm
+else
+	LFLAGS= -lcheck
 endif
 
-all: s21_decimal.a
+all: s21_decimal.a test gcov_report
 
-s21_decimal.a: clean
-	gcc -c $(FLAGS) s21_*.c
-	ar -rcs s21_decimal.a *.o
-	rm *.o
+s21_decimal.a:
+	$(CC) -c s21_*.c
+	ar rsc ./s21_decimal.a *.o
 
 test: s21_decimal.a
-	gcc $(FLAGS) tests/*.c $(CFLAGS) s21_decimal.a -o main
+	$(CC) s21_*.c $(TEST) $(LFLAGS) -o test
+	./test
 
-gcov_report: clean exec_check
-	cd tests/ && gcc $(FLAGS) --coverage ../s21_*.c test*.c $(CFLAGS) -o s21_test
-	-cd tests/ && ./s21_test
-	cd tests/ && lcov -t "s21_test" -o s21_test.info -c -d .
-	genhtml -o report tests/s21_test.info
-	rm -f tests/*.g*
-	$(COMMAND) report/index.html
-
-exec_check:
-	@:
-	$(foreach exec, $(EXECUTABLES),\
-	$(if $(shell command -v $(exec) 2> /dev/null),, $(info Error: Install '$(exec)')))
+gcov_report: s21_decimal.a
+	$(CC) --coverage s21_*.c $(TEST) $(LFLAGS) -o gcov_test
+	./gcov_test
+	lcov -t "gcov-test" -o test_report.info -c -d .
+	genhtml -o report test_report.info
+	open ./report/index.html
 
 clean:
-	rm -f *.a main tests/*.g* a.out tests/*.info tests/s21_test *.g* s21_test*
-	rm -rf report/
+	rm -rf *.a *.gch *.o *.gcno *.gcda gcov_test test_report.info report test
+
+reduild:
+	make clean
+	make all
+
+clang_n:
+	cd unit_tests
+	clang-format -style=Google -n *.[ch]
+	cd ../
+	clang-format -style=Google -n *.[ch]
+
+clang_i:
+	cd unit_tests
+	clang-format -style=Google -i *.[ch]
+	cd ../
+	clang-format -style=Google -i *.[ch]
