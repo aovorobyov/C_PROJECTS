@@ -112,7 +112,7 @@ START_TEST(s21_div_8) {
 END_TEST
 
 Suite *test_div(void) {
-  Suite *s = suite_create("\033[45m-=S21_DIV=-\033[0m");
+  Suite *s = suite_create("S21_DIV");
   TCase *tc = tcase_create("div");
 
   tcase_add_test(tc, s21_div_1);

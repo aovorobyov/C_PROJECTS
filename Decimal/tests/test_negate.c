@@ -199,7 +199,7 @@ START_TEST(s21_negate_9) {
 END_TEST
 
 Suite *test_negate(void) {
-  Suite *s = suite_create("\033[45m-=S21_NEGATE=-\033[0m");
+  Suite *s = suite_create("S21_NEGATE");
   TCase *tc = tcase_create("negate_tc");
 
   tcase_add_test(tc, s21_negate_1);

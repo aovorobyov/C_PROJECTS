@@ -824,7 +824,7 @@ START_TEST(s21_greater_or_equal_10) {
 END_TEST
 
 Suite *test_compare(void) {
-  Suite *s = suite_create("\033[45m-=S21_COMPARE=-\033[0m");
+  Suite *s = suite_create("S21_COMPARE");
   TCase *tc = tcase_create("compare_tc");
 
   tcase_add_test(tc, s21_less_1);

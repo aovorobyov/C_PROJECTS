@@ -107,7 +107,7 @@ END_TEST
 // END_TEST
 
 Suite *test_mul(void) {
-  Suite *s = suite_create("\033[45m-=S21_MUL=-\033[0m");
+  Suite *s = suite_create("S21_MUL");
   TCase *tc = tcase_create("mul");
 
   tcase_add_test(tc, s21_mul_1);

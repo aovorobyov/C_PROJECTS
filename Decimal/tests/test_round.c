@@ -199,7 +199,7 @@ START_TEST(s21_round_9) {
 END_TEST
 
 Suite *test_round(void) {
-  Suite *s = suite_create("\033[45m-=S21_ROUND=-\033[0m");
+  Suite *s = suite_create("S21_ROUND");
   TCase *tc = tcase_create("round_tc");
 
   // tcase_add_test(tc, s21_round_1);

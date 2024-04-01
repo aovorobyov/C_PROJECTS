@@ -1,12 +1,11 @@
 CC= gcc -Werror -Wall -Wextra -std=c11 -g
 TEST= ./tests/test*.c
-LFLAGS= -lcheck
 
-# ifeq (shell name, Linux)
-# 	LFLAGS= -lcheck -lsubunit -pthread -lrt -lm
-# else
-# 	LFLAGS= -lcheck
-# endif
+ifeq (shell name, Linux)
+	LFLAGS= -lcheck -lsubunit -pthread -lrt -lm
+else
+	LFLAGS= -lcheck
+endif
 
 all: s21_decimal.a test gcov_report
 

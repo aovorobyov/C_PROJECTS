@@ -539,7 +539,7 @@ START_TEST(s21_from_float_to_decimal_12) {
 END_TEST
 
 Suite *test_convert(void) {
-  Suite *s = suite_create("\033[45m-=S21_CONVERT=-\033[0m");
+  Suite *s = suite_create("21_CONVERT");
   TCase *tc = tcase_create("convert_tc");
 
   tcase_add_test(tc, s21_int_to_dec_1);

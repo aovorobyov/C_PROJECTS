@@ -101,7 +101,7 @@ START_TEST(s21_sub_7) {
 END_TEST
 
 Suite *test_sub(void) {
-  Suite *s = suite_create("\033[45m-=S21_SUB=-\033[0m");
+  Suite *s = suite_create("S21_SUB");
   TCase *tc = tcase_create("sub");
 
   tcase_add_test(tc, s21_sub_1);

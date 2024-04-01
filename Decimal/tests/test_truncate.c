@@ -177,7 +177,7 @@ END_TEST
 // END_TEST
 
 Suite *test_truncate(void) {
-  Suite *s = suite_create("\033[45m-=S21_TRUNCATE=-\033[0m");
+  Suite *s = suite_create("S21_TRUNCATE");
   TCase *tc = tcase_create("truncate_tc");
 
   // tcase_add_test(tc, s21_truncate_1);

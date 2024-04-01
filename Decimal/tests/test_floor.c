@@ -177,7 +177,7 @@ START_TEST(s21_floor_8) {
 END_TEST
 
 Suite *test_floor(void) {
-  Suite *s = suite_create("\033[45m-=S21_FLOOR=-\033[0m");
+  Suite *s = suite_create("S21_FLOOR");
   TCase *tc = tcase_create("floor_tc");
 
   // tcase_add_test(tc, s21_floor_1);
